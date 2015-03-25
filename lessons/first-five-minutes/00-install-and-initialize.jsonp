@@ -1,0 +1,27 @@
+{
+  '00-first-task': {
+    'name': 'First task!',
+    'hint': 'Type, <code>first</code> to achieve this task',
+    'validate': '^first$'
+  },
+  '01-second-task': {
+    'name': 'Second task',
+    'hint': 'Do this secondly',
+    'validate': {
+      'match': '^second .*$',
+      'echo': 'This option is optional'
+    }
+  },
+  '02-third-task': {
+    'name': 'Last task!',
+    'hint': 'This is the last one',
+    'validate': function(cmd, term, next) {
+      var m = cmd.match('^last (.*)$');
+      if(!m) {
+        return next(true);
+      }
+      term.echo('You said {0}'.format(m[1]));
+      return next();
+    }
+  }
+}
