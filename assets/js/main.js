@@ -107,9 +107,9 @@ $(document).ready(function() {
   $(window).trigger('resize');
   $.address.change(function(e) {
     var path = e.value;
-    var mod = path.split('/')[1];
+    var mod = path.split('/')[2];
     if(mod) {
-      var lesson = path.split('/')[2].split('.')[0];
+      var lesson = path.split('/')[3].split('.')[0];
     }
 
     if(!mod || !lesson) {
