@@ -1,13 +1,14 @@
 {
-    "modules": {
-        'First Five Minutes' : {
-            'description': "Devops may be a constant challenge for you, or maybe the concept has never crossed your mind. Regardless, you've made your way to Juju and hopefully see why we think it's service orchestration at its finest.",
-            "lessons": [
-                "lessons/first-five-minutes/00-install-and-initialize.jsonp",
-                "lessons/first-five-minutes/01-create-local-charm-repo.jsonp",
-                "lessons/first-five-minutes/02-create-your-charm.jsonp",
-                "lessons/first-five-minutes/03-create-your-charm-pt2.jsonp",
-                "lessons/first-five-minutes/04-deploy-your-charm.jsonp"
+    'modules": {
+        'first-five-minutes" : {
+            'title": "Your First Five Minutes Charming",
+            'description": "Devops may be a constant challenge for you, or maybe the concept has never crossed your mind. Regardless, you\'ve made your way to Juju and hopefully see why we think it\'s service orchestration at its finest.',
+            'lessons": [
+                'lessons/first-five-minutes/00-install-and-initialize.jsonp",
+                'lessons/first-five-minutes/01-create-local-charm-repo.jsonp",
+                'lessons/first-five-minutes/02-create-your-charm.jsonp",
+                'lessons/first-five-minutes/03-create-your-charm-pt2.jsonp",
+                'lessons/first-five-minutes/04-deploy-your-charm.jsonp"
             ]
         }
     }
