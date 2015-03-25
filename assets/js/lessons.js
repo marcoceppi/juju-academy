@@ -1,5 +1,5 @@
-function next_lesson(l) {
-  var keys = Object.keys(window.lessons).sort();
+function next_module(l) {
+  var keys = Object.keys(window.modules[window.module]).sort();
   var loc = keys.indexOf(l);
   var next = keys[loc+1];
 
@@ -8,8 +8,8 @@ function next_lesson(l) {
   }
 }
 
-function previous_lesson(l) {
-  var keys = Object.keys(window.lessons).sort();
+function previous_module(l) {
+  var keys = Object.keys(window.modules[window.module]).sort();
   var loc = keys.indexOf(l);
   var next = keys[loc-1];
 
@@ -17,6 +17,31 @@ function previous_lesson(l) {
     return next;
   }
 }
+
+function next_lesson(l) {
+  var keys = window.modules[window.module].lessons.sort();
+  console.log(window.modules[window.module].lessons);
+  console.log(l, 'hello', 'lessons/' + window.module + '/' + l + '.jsonp');
+  var loc = keys.indexOf('lessons/' + window.module + '/' + l + '.jsonp');
+  console.log(loc);
+  var next = keys[loc+1];
+  console.log('n', next);
+
+  if(next) {
+    return next;
+  }
+}
+
+function previous_lesson(l) {
+  var keys = Object.keys(window.modules[window.module].lessons).sort();
+  var loc = keys.indexOf(l);
+  var next = keys[loc-1];
+
+  if(next) {
+    return window.module + '/' + next;
+  }
+}
+
 
 function load_lesson(l) {
   $('.sidebar h1 .content').text(l.name);

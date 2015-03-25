@@ -8,7 +8,8 @@ Last login: {2}";
 
 window.commands = new Commands();
 window.file = new Files();
-window.lessons = {};
+window.modules ={};
+window.module = null;
 window.lesson = null;
 
 function load_commands(cmds) {
@@ -50,6 +51,7 @@ function ready_set_next() {
             window.terminal.clear();
             $('.sidebar .lesson.description').show();
             $('.sidebar h1 i').removeClass('green');
+            console.log($(this).data('lesson'));
             $.address.value($(this).data('lesson'));
           }
         });
@@ -91,10 +93,10 @@ $(document).ready(function() {
   $.getScript("commands/builtins.jsonp");
   $.getScript("commands/juju.jsonp");
   $.getJSON('lessons.json', function(data) {
-    data.lessons.forEach(function(l) {
-      // TODO: make this less ugly
-      var lesson = l.split('/')[1].split('.')[0];
-      window.lessons[lesson] = l;
+    console.log('far', data);
+    Object.keys(data.modules).forEach(function(key, index) {
+      console.log(key);
+      window.modules[key] = data.modules[key];
     });
   });
 
@@ -104,12 +106,20 @@ $(document).ready(function() {
 
   $(window).trigger('resize');
   $.address.change(function(e) {
-    var lesson = e.value;
-    if(lesson == '/' || !$.inArray(window.lessons, lesson.replace('/', ''))) {
-      $.address.value('00-what-is-juju');
-      lesson = "00-what-is-juju";
+    var path = e.value;
+    var mod = path.split('/')[1];
+    if(mod) {
+      var lesson = path.split('/')[2].split('.')[0];
     }
-    $.getScript("lessons/" + lesson + ".jsonp");
-    window.lesson = lesson.replace('/', '');
+
+    if(!mod || !lesson) {
+      path = 'lessons/first-five-minutes/00-install-and-initialize.jsonp';
+      $.address.value(path);
+      mod = "first-five-minutes";
+      lesson = "00-install-and-initialize";
+    }
+    $.getScript(path);
+    window.module = mod;
+    window.lesson = lesson;
   });
 });

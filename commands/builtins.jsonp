@@ -125,7 +125,7 @@ load_commands([
     if(!cmd.match('^uptime$')) {
       return next();
     }
-    var ls = Object.keys(window.lessons).sort();
+    var ls = window.modules[window.module].lessons;
     term.echo(" {0}, 1 users, lesson {1} of {2}".format((new Date()).toTimeString(), ls.indexOf(window.lesson) + 1, ls.length));
   }
 ]);

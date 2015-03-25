@@ -1,27 +1,16 @@
-{
-  '00-first-task': {
-    'name': 'First task!',
-    'hint': 'Type, <code>first</code> to achieve this task',
-    'validate': '^first$'
-  },
-  '01-second-task': {
-    'name': 'Second task',
-    'hint': 'Do this secondly',
-    'validate': {
-      'match': '^second .*$',
-      'echo': 'This option is optional'
-    }
-  },
-  '02-third-task': {
-    'name': 'Last task!',
-    'hint': 'This is the last one',
-    'validate': function(cmd, term, next) {
-      var m = cmd.match('^last (.*)$');
-      if(!m) {
-        return next(true);
-      }
-      term.echo('You said {0}'.format(m[1]));
-      return next();
-    }
+load_lesson({
+  "name": "What is Juju?",
+  "description": [
+    "Configure, manage, maintain, deploy and scale efficiently with best-practice Charms on any public, private or hybrid cloud from a powerful GUI or the command-line.",
+    "Juju enables you to use Charms to deploy your application architectures to EC2, OpenStack, Azure, HP your data center and even your own Ubuntu based laptop. Moving between environments is simple giving you the flexibility to switch hosts whenever you want — for free.",
+    "Once installed, you can interact with Juju using the <code>juju</code> command. Juju has several sub-commands which dictate what Juju should do. You can run <code>juju help</code> at any time to review help topics",
+    "For this lesson, run the Juju command and list all the available commands for juju",
+  ],
+  "tasks": {
+    "00-run-juju": {
+      "name": "Run the Juju command",
+      "validate": "^juju$",
+      "hint": "Simply type <code>juju</code>!"
+    },
   }
-}
+});
